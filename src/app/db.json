@@ -1,0 +1,61 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "gender": "Male",
+        "address": "Saharanpur",
+        "dob": "1-10-1996",
+        "grade": "8th Grade",
+        "roles": [],
+        "profile": {
+          "name": "akshit",
+          "email": "akshit48@gmail.com",
+          "password": "12345"
+        }
+      },
+      {
+        "id": 2,
+        "gender": "Male",
+        "address": "Noida",
+        "dob": "10-11-1997",
+        "grade": "9th Grade",
+        "roles": [],
+        "profile": {
+          "name": "ankit",
+          "email": "ankit@gmail.com",
+          "password": "12345"
+        }
+      },
+      {
+        "id": 3,
+        "gender": "Femail",
+        "address": "Delhi",
+        "dob": "06-12-1999",
+        "grade": "10th Grade",
+        "roles": [],
+        "profile": {
+          "name": "Deepak",
+          "email": "deepak@gmail.com",
+          "password": "12345"
+        }
+      },
+      {
+        "id": 4,
+        "gender": "Male",
+        "address": "lucknow",
+        "dob": "2022-08-09",
+        "grade": "12th Grade",
+        "roles": [
+          {
+            "role": ""
+          }
+        ],
+        "profile": {
+          "name": "neeraj12",
+          "email": "neeraj@gmail.com",
+          "password": "Akshit@12",
+          "confirmPassword": "Akshit@12"
+        }
+      }
+    ]
+  }

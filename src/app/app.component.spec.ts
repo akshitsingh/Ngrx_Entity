@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Ngrx-entity-app'`, () => {
+  it(`should have as title 'reactive-form-ex'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Ngrx-entity-app');
+    expect(app.title).toEqual('reactive-form-ex');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Ngrx-entity-app app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('reactive-form-ex app is running!');
   });
 });

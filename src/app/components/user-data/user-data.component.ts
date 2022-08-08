@@ -3,10 +3,12 @@ import { userListRequestAction } from './../reactive-form/state/reactive-form.ac
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from './../../services/api.service';
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, ViewChild } from '@angular/core';
 import { UserReducerState } from '../reactive-form/state/reactive-form.reducer';
 import { User } from 'src/app/models/user.model';
 import { UserDeleteAction } from '../reactive-form/state/reactive-form.action';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
  
 /** for Show the users profile data */
 @Component({
@@ -19,8 +21,20 @@ export class UserDataComponent implements OnInit,OnDestroy {
   @Output() editEvent = new EventEmitter()
   userSubscription : Subscription;
 
+  pageSizeOptions: number[] = [5, 10];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+  length : number;
+
+
+  pageSize = 5;
+
+  @ViewChild('paginator') paginator: MatPaginator;
+
   displayedColumns: string[] = ['position', 'name', 'email','dob','gender','address','action'];
-  dataSource:User[] = [];
+  dataSource: MatTableDataSource<User>;
+
 
   constructor(
     private api : ApiService,
@@ -34,9 +48,11 @@ export class UserDataComponent implements OnInit,OnDestroy {
   //  })
    this.store.dispatch(userListRequestAction());
    this.userSubscription = this.store.select(getAllUsers).subscribe(res=>{
-      this.dataSource = res;
-    })
-  }
+    this.dataSource = new MatTableDataSource(res);
+    this.dataSource.paginator = this.paginator;
+    this.length = res.length;
+  })
+}
 
 
    //getUserDetail by id

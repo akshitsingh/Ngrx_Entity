@@ -56,6 +56,24 @@
         "password": "Akshit@12",
         "confirmPassword": "Akshit@12"
       }
+    },
+    {
+      "id": 5,
+      "gender": "Male",
+      "address": "Haryana",
+      "dob": "2022-08-01",
+      "grade": "8th Grade",
+      "roles": [
+        {
+          "role": "Software Eng"
+        }
+      ],
+      "profile": {
+        "name": "aman",
+        "email": "aman@gmail.com",
+        "password": "Amanjain@12",
+        "confirmPassword": "Amanjain@12"
+      }
     }
   ]
 }

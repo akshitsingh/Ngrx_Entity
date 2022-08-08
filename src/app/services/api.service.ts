@@ -25,8 +25,8 @@ addNewUser(user:User):Observable<User>{
 }
 
  /**Get all users */
-  getAllUsers():Observable<User>{
-    return this.http.get<User>('http://localhost:3000/users')
+  getAllUsers():Observable<User[]>{
+    return this.http.get<User[]>('http://localhost:3000/users')
   }
 
   /**Update user  */

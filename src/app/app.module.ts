@@ -23,6 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 //Components
@@ -58,6 +60,7 @@ import { ReactiveFormEffects } from './components/reactive-form/state/reactive-f
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatCardModule,
     MatTableModule,
     EffectsModule.forRoot([ReactiveFormEffects]),

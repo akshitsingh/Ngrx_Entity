@@ -20,7 +20,7 @@ export class ReactiveFormEffects {
     this.actions$.pipe(
       ofType(userListRequestAction),
       switchMap(() => this.api.getAllUsers().pipe(
-        map((users) => userListSuccessAction({users : []}),
+        map((users) => userListSuccessAction({users : users}),
         catchError(() => of(userListErrorAction()))
       ))
     )

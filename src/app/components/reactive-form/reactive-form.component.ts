@@ -1,6 +1,6 @@
-import { getUserDetail, getAllUsers } from './state/reactive-form.selecter';
-import { UserAddAction, UserUpdateAction } from './state/reactive-form.action';
-import { UserReducerState } from './state/reactive-form.reducer';
+import { getUserDetail, getAllUsers } from '../../store/reactive-form.selecter';
+import { UserAddAction, UserUpdateAction } from '../../store/reactive-form.action';
+import { UserReducerState } from '../../store/reactive-form.reducer';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +8,7 @@ import { CustomValidators } from '../../validators/custom.validator';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { Store } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
  
 /** Reactive form with all validation */
 @Component({
@@ -45,9 +46,7 @@ export class ReactiveFormComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
       id : [''],
-      gender: ['Male'],
       address : ['',[Validators.required]],
-      dob: ['', [Validators.required]],
       grade: [''],
       roles : this.fb.array([]),
       profile : ['']
@@ -90,18 +89,7 @@ export class ReactiveFormComponent implements OnInit {
     this.rolesFieldAsFormArray.removeAt(i);
    }
 
-   /* Date */
-   /**
-    * 
-    * @param e date picker event
-    */
-   date(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.myForm.get('dob').setValue(convertDate, {
-      onlyself: true,
-    });
-  }
-
+   
   // submit the reactive form 
   submitForm(){
     if(!this.update){
@@ -117,7 +105,11 @@ export class ReactiveFormComponent implements OnInit {
 
   //Update user detail 
   updateUser(){
-    this.store.dispatch(UserUpdateAction({update : this.myForm.value}))
+    const update: Update<User> = {
+      id: this.myForm.get('id').value,
+      changes: this.myForm.value
+  };
+    this.store.dispatch(UserUpdateAction({update}))
   }
 
   /**
@@ -133,9 +125,9 @@ export class ReactiveFormComponent implements OnInit {
         email : user.profile.email,
        password : user.profile.password,
        confirmPassword : 'Akshit@12',
-       } ,
        dob : new Date(user.dob).toISOString().substring(0, 10),
        gender : user.gender,
+       } ,
        address : user.address,
        grade : user.grade
     })

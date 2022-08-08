@@ -1,5 +1,5 @@
  import { UserReducerState, userAdapter } from './reactive-form.reducer';
-import { AppState } from './../../../appstate';
+import { AppState } from '../appstate';
 import { createFeatureSelector, createSelector } from "@ngrx/store";
  
 export const getUserState = createFeatureSelector<UserReducerState>('users');
@@ -29,26 +29,14 @@ export const selectUserEntities = createSelector(
      userSelector.selectEntities
    );
 
+   export const getAllUserIds = createSelector(getUserState,userSelector.selectIds)
+
    export const selectCurrentUserId = createSelector(
      getUserState,
      userSelector.selectIds
    );
 
-// export const selectCurrentUser = createSelector(
-//      selectUserEntities,
-//      selectCurrentUserId,
-//      (userEntities, id) => userEntities[id]
-//    );
-
-
-
-// export const getUserState = createFeatureSelector<UserReducerState>('users');
-
-// export const getAllUsers = createSelector(getUserState,(state:UserReducerState)=>{
-//      return state.users;
-// })
-
-
+ 
 
 
 

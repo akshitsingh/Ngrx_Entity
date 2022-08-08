@@ -24,6 +24,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 
@@ -36,8 +37,9 @@ import { environment } from 'src/environments/environment';
 import { AppState } from './appstate';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { ReactiveFormEffects } from './components/reactive-form/state/reactive-form.effects';
-
+import { ReactiveFormEffects } from './store/reactive-form.effects';
+import { CustomSerializer } from './store/custom-serializer';
+ 
 @NgModule({
   declarations: [AppComponent, ReactiveFormComponent, ProfileFormComponent, UserDataComponent],
   imports: [
@@ -63,11 +65,15 @@ import { ReactiveFormEffects } from './components/reactive-form/state/reactive-f
     MatPaginatorModule,
     MatCardModule,
     MatTableModule,
+    
     EffectsModule.forRoot([ReactiveFormEffects]),
     StoreModule.forRoot(AppState),
     StoreDevtoolsModule.instrument({
        maxAge: 25, logOnly: environment.production
        }),
+       StoreRouterConnectingModule.forRoot({
+        serializer: CustomSerializer,
+      }),
   ],
   
   providers: [],

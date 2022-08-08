@@ -53,5 +53,40 @@
        </mat-error>
      </mat-form-field>
       </div>
+
+        <!-- Gender -->
+        <div class="col-md-6">
+          <div class="misc-bottom-padding">
+            <mat-label>Gender:</mat-label>
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="gender"
+            >
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <!-- Date picker -->
+        <div class="col-md-6">
+          <mat-form-field>
+            <input
+              matInput
+              readonly
+              [matDatepicker]="picker"
+              placeholder="Date of birth"
+              formControlName="dob"
+              (click)="picker.open()"
+              (dateChange)="date($event)"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+    
+
   </div>
   </div>

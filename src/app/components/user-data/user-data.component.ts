@@ -1,12 +1,12 @@
-import { userListRequestAction } from './../reactive-form/state/reactive-form.action';
- import { getAllUsers, getUserDetail } from './../reactive-form/state/reactive-form.selecter';
-import { Store } from '@ngrx/store';
+import { userListRequestAction } from '../../store/reactive-form.action';
+ import { getAllUsers, getUserDetail } from '../../store/reactive-form.selecter';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit, OnDestroy, Output, EventEmitter, ViewChild } from '@angular/core';
-import { UserReducerState } from '../reactive-form/state/reactive-form.reducer';
+import { UserReducerState } from '../../store/reactive-form.reducer';
 import { User } from 'src/app/models/user.model';
-import { UserDeleteAction } from '../reactive-form/state/reactive-form.action';
+import { UserDeleteAction } from '../../store/reactive-form.action';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
  
@@ -46,6 +46,7 @@ export class UserDataComponent implements OnInit,OnDestroy {
   //    console.log("Ress",res)
   //   //  this.dataSource = res;
   //  })
+  
    this.store.dispatch(userListRequestAction());
    this.userSubscription = this.store.select(getAllUsers).subscribe(res=>{
     this.dataSource = new MatTableDataSource(res);

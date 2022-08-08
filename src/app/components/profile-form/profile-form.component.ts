@@ -56,8 +56,9 @@ export class ProfileFormComponent implements ControlValueAccessor, OnDestroy {
       email: ['',[Validators.required]],
       password : ['',[Validators.required,Validators.minLength(8),CustomValidators.passwordStrengthValidator]],
       confirmPassword : ['',[Validators.required]],
-      // confirmPassword : ['',Validators.required]
-    },
+      dob: ['', [Validators.required]],
+      gender: ['Male'],
+     },
     {
       validator : CustomValidators.mustMatch('password', 'confirmPassword') // password must match with confirmpassword;
     }
@@ -102,5 +103,18 @@ export class ProfileFormComponent implements ControlValueAccessor, OnDestroy {
     validate(_: FormControl) {
       return this.profileForm.valid ? null : { profile: { valid: false } };
     }
+
+    /* Date */
+   /**
+    * 
+    * @param e date picker event
+    */
+   date(e) {
+    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
+    this.profileForm.get('dob').setValue(convertDate, {
+      onlyself: true,
+    });
+  }
+
 
 }

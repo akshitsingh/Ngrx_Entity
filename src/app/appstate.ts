@@ -1,12 +1,15 @@
+import { routerReducer, RouterReducerState } from "@ngrx/router-store";
 import { ActionReducerMap } from "@ngrx/store";
-import { userReducer, UserReducerState } from "./components/reactive-form/state/reactive-form.reducer";
+import { userReducer, UserReducerState } from "./store/reactive-form.reducer";
 
 
 
 export interface AppState{
-    users : UserReducerState
+    users : UserReducerState,
+    router : RouterReducerState
 }
 
 export const AppState: ActionReducerMap<AppState> = {
-    users : userReducer
+    users : userReducer,
+    router : routerReducer
 }

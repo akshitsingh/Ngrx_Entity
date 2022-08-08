@@ -1,5 +1,5 @@
 import { userListErrorAction, userListRequestAction, userListSuccessAction, UserUpdateSuccessAction, UserUpdateAction, userErrorAction, UserAddAction, UserAddSuccessAction, UserDeleteAction, UserDeleteSuccessAction } from './reactive-form.action';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../services/api.service';
 import { Injectable } from '@angular/core';
 import { Actions,createEffect, Effect } from '@ngrx/effects';
 import { ofType } from '@ngrx/effects';
